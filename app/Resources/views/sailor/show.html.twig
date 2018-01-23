@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sailor</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sailor.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ sailor.name }}</td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <td>{{ sailor.level }}</td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>{{ sailor.role.describe }}</td>
+            </tr>
+            <tr>
+                <th>Boat</th>
+                <td>{{ sailor.boat.name ?? 'Null' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('sailor_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('sailor_edit', { 'id': sailor.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

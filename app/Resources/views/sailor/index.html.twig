@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sailors list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sailor in sailors %}
+            <tr>
+                <td><a href="{{ path('sailor_show', { 'id': sailor.id }) }}">{{ sailor.id }}</a></td>
+                <td>{{ sailor.name }}</td>
+                <td>{{ sailor.level }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('sailor_show', { 'id': sailor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('sailor_edit', { 'id': sailor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('sailor_new') }}">Create a new sailor</a>
+        </li>
+    </ul>
+{% endblock %}

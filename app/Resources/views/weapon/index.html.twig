@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Weapons list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Damage</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for weapon in weapons %}
+            <tr>
+                <td><a href="{{ path('weapon_show', { 'id': weapon.id }) }}">{{ weapon.id }}</a></td>
+                <td>{{ weapon.type }}</td>
+                <td>{{ weapon.damage }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('weapon_show', { 'id': weapon.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('weapon_edit', { 'id': weapon.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('weapon_new') }}">Create a new weapon</a>
+        </li>
+    </ul>
+{% endblock %}
